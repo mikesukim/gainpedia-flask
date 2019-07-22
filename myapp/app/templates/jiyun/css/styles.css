@@ -1,0 +1,26 @@
+/*stylesheet for bootstraptest*/
+
+
+
+a {
+    letter-spacing: 2px;
+    
+}
+
+.nav > li > a:hover {
+    color: aqua;
+}
+
+.shadow-bottom {
+    -webkit-box-shadow: 0 8px 6px -6px #eee;
+    -moz-box-shadow: 0 8px 6px -6px #eee;
+    box-shadow: 0 8px 6px -6px #eee;
+
+    /* the rest of your styling */
+}
+
+#nav .change {
+    -webkit-box-shadow: 0 8px 6px -6px #eee;
+    -moz-box-shadow: 0 8px 6px -6px #eee;
+    box-shadow: 0 8px 6px -6px #eee;
+}
