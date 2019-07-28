@@ -7,7 +7,7 @@
 </head>
 <body>
     {% for hist in hists %}
-    <img src="{{url_for('static', filename=hist)}}?q=20" alt="{{hist}}" height="500">
+    <img src="{{url_for('static', filename=hist)}}" alt="{{hist}}" height="500">
 <!--    {{hist}}-->
     {% endfor %}
 </body>

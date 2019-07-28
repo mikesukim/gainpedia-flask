@@ -30,6 +30,17 @@ def images():
 def jiyun():
   return (render_template('jiyun.html'))
 
+@mod.route('/jiyun1')
+def jiyun1():
+  hists = listdir_nohidden('app/static/images/daily')
+  hists = ['images/daily/' + file for file in hists]
+  return render_template('jiyun.html', hists = hists)
+
+
+
+
+
+
 
 
 def listdir_nohidden(path):

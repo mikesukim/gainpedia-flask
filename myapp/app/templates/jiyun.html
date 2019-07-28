@@ -31,8 +31,23 @@
           <li class="nav-item"><a class="nav-link text-muted mt-2 mb-2" href="#" style="font-size: 12px">MUSIC</a> </li>
           <li class="nav-item"><a class="nav-link text-muted mt-2 mb-2" href="#" style="font-size: 12px">MOVIE</a>  </li>
           <li class="nav-item"><a class="nav-link text-muted mt-2 mb-2" href="#" style="font-size: 12px">BOOK</a> </li>
-          </ul>
-</nav>
+              </ul>
+    </nav>
+
+        {% for hist in hists %}
+            <div class="container-fluid text-center" style="margin-bottom: 100px;">
+            <img src="{{url_for('static', filename=hist)}}"  class="img-fluid mx-auto d-block mb-5" style="width: 70%"alt="{{hist}}"> 
+          <h1 class="pb-1" style="font-size: 20px; letter-spacing: 2px;">SOAKING IN THE COLORS</h1>
+          <p class="mb-4" style="font-size: 12px; color: #ccc; letter-spacing: 2px;">JULY 22, 2019</p>
+
+          <p class="mx-auto mb-5 text-left" style="font-family: Arial; font-size: 14px; width: 65%;">Reboot builds upon Normalize, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some table styles for a simpler baseline and later provide .table, .table-bordered, and more. Reboot builds upon Normalize, providing many HTML elements with somewhat opinionated styles using only element selectors. </p>
+
+        <a class="inline-block text-dark" href="#" style="font-size: 11px; text-decoration-line: none; ">READ MORE</a>
+
+          </div>
+
+        {% endfor %}
+
       
       
       <div class="container-fluid text-center" style="margin-bottom: 100px;">
