@@ -37,6 +37,10 @@ def jiyun1():
   return render_template('jiyun.html', hists = hists)
 
 
+@mod.route('/textregister')
+def textregister():
+  return render_template('textregister.html')
+
 
 
 

@@ -1,0 +1,26 @@
+<!-- Include stylesheet -->
+<link href="{{url_for('static', filename='vendor/node_modules/quill/dist/quill.snow.css')}}" rel="stylesheet">
+
+<!-- Create the editor container -->
+<div id="editor">
+  <p>Hello World!</p>
+  <p>Some initial <strong>bold</strong> text</p>
+  <p><br></p>
+</div>
+
+<!-- Include the Quill library -->
+<script src="{{url_for('static', filename='vendor/node_modules/quill/dist/quill.js')}}"></script>
+
+<!-- Initialize Quill editor -->
+<script>
+  var quill = new Quill('#editor', {
+    theme: 'snow',
+    modules: {
+     toolbar: [
+        ['bold', 'italic'],
+        ['link', 'blockquote', 'code-block', 'image'],
+        [{ list: 'ordered' }, { list: 'bullet' }]
+     ]
+    }
+  });
+</script>

@@ -7,6 +7,7 @@ a {
     
 }
 
+
 .nav > li > a:hover {
     color: aqua;
 }
@@ -23,4 +24,11 @@ a {
     -webkit-box-shadow: 0 8px 6px -6px #eee;
     -moz-box-shadow: 0 8px 6px -6px #eee;
     box-shadow: 0 8px 6px -6px #eee;
+}
+
+img {
+    
+    width: 70%;
+    height: auto;
+    max-width: 100px;
 }
