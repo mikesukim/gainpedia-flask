@@ -1,9 +1,13 @@
 from flask import Flask, render_template
+from flaskext.mysql import MySQL
 # from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object('app.config')
 
+
+mysql = MySQL()
+mysql.init_app(app)
 # db = SQLAlchemy(app)
 
 
@@ -13,6 +17,7 @@ def not_found(error):
 
 from app.core.views import mod as core
 app.register_blueprint(core)
+
 
 # Later on you'll import the other blueprints the same way:
 #from app.comments.views import mod as commentsModule

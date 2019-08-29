@@ -1,14 +1,119 @@
-<!DOCTYPE=html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>
-        images
-    </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+	<style>
+			body {
+				font-family: sans-serif;
+			}
+			.intro {
+				margin: 1em 0;
+			}
+			p {
+				margin: 0.3em 0;
+			}
+			ul,
+			li {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+           .image-wrapper {
+               width: 70%;
+                height: 0;
+                padding-bottom: 39.375%; /* You define this doing height / width * 100% */
+                position: relative;
+                border: 2px solid pink;
+            }
+			img {
+				display: block;
+				border: 0;
+				opacity: 0;
+				width: 100%;
+/*                height: 280px;*/
+                margin: 0 auto
+                position: absolute;
+			}
+          
+			img:not(.initial) {
+				transition: opacity 1s;
+			}
+			img.initial,
+			img.loaded,
+			img.error {
+				opacity: 1;
+			}
+			img:not([src]) {
+				visibility: hidden;
+			}
+		</style>
 </head>
 <body>
-    {% for hist in hists %}
-    <img src="{{url_for('static', filename=hist)}}" alt="{{hist}}" height="500">
-<!--    {{hist}}-->
-    {% endfor %}
+
+         {% for hist in hists %}
+        <div class = "image-wrapper">
+            <img data-src="{{url_for('static', filename=hist)}}" class="lazy" alt="{{hist}}">
+        </div>
+        {% endfor %}
+            
+
+            
+        <img alt="A lazy image" data-src = "{{ url_for('static', filename='images/jiyun/fireworks.JPG' ) }}">
+   
+    
+             
+
+            
+    
+    
+    <script src="{{url_for('static', filename='vendor/node_modules/vanilla-lazyload/dist/lazyload.js')}}"></script>
+   <script>
+			(function() {
+				function logElementEvent(eventName, element) {
+					console.log(
+						Date.now(),
+						eventName,
+						element.getAttribute("data-src")
+					);
+				}
+				var callback_enter = function(element) {
+					logElementEvent("🔑 ENTERED", element);
+				};
+				var callback_exit = function(element) {
+					logElementEvent("🚪 EXITED", element);
+				};
+				var callback_reveal = function(element) {
+					logElementEvent("👁️ REVEALED", element);
+				};
+				var callback_loaded = function(element) {
+					logElementEvent("👍 LOADED", element);
+				};
+				var callback_error = function(element) {
+					logElementEvent("💀 ERROR", element);
+					element.src =
+						"https://via.placeholder.com/440x560/?text=Error+Placeholder";
+				};
+				var callback_finish = function() {
+					logElementEvent("✔️ FINISHED", document.documentElement);
+				};
+				var ll = new LazyLoad({
+                    elements_selector: ".lazy",
+					threshold: 0,
+					// Assign the callbacks defined above
+					callback_enter: callback_enter,
+					callback_exit: callback_exit,
+					callback_reveal: callback_reveal,
+					callback_loaded: callback_loaded,
+					callback_error: callback_error,
+					callback_finish: callback_finish
+				});
+			})();
+		</script>
 </body>
 </html>
+
+
+
+

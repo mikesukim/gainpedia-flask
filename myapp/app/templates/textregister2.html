@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <title>Text register</title>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans%3A300,400,600,700" rel="stylesheet">
+    
+        <style>
+            * {
+            box-sizing: border-box;
+            }
+
+            html, body {
+              height: 100%;
+              margin: 0;
+              width: 100%;
+            }
+            body {
+              padding: 25px;
+            }
+
+            #editor-container {
+              border: 1px solid #ccc;
+              font-family: 'Open Sans', Helvetica, sans-serif;
+              font-size: 1.2em;
+              height: 200px;
+              margin: 0 auto;
+              width: 450px;
+            }
+            #editor-container h1 + p,
+            #editor-container h2 + p {
+              margin-top: 0.5em; 
+            }
+            #editor-container blockquote {
+              border-left: 4px solid #111;
+              padding-left: 1em;
+            }
+
+            #tooltip-controls, #sidebar-controls {
+              text-align: center;
+            }
+
+            button {
+              background: transparent;
+              border: none;
+              cursor: pointer;
+              display: inline-block;
+              font-size: 18px;
+              padding: 0;
+              height: 32px;
+              width: 32px;
+              text-align: center;
+            }
+            button:active, button:focus {
+              outline: none;
+            }
+            </style>
+    </head>
+    <body>
+        <div id="tooltip-controls">
+          <button id="bold-button"><i class="fa fa-bold"></i></button>
+          <button id="italic-button"><i class="fa fa-italic"></i></button>
+          <button id="link-button"><i class="fa fa-link"></i></button>
+          <button id="blockquote-button"><i class="fa fa-quote-right"></i></button>
+          <button id="header-1-button"><i class="fa fa-header"><sub>1</sub></i></button>
+          <button id="header-2-button"><i class="fa fa-header"><sub>2</sub></i></button>
+        </div>
+        <div id="sidebar-controls">
+            <button id="image-button"><i class="fa fa-camera"></i></button>
+            <button id="video-button"><i class="fa fa-play"></i></button>
+            <button id="tweet-button"><i class="fa fa-twitter"></i></button>
+            <button id="divider-button"><i class="fa fa-minus"></i></button>
+        </div>
+        <div id="editor-container">Tell your story...</div>
+        
+        
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <script>
+            let Inline = Quill.import('blots/inline');
+            let Block = Quill.import('blots/block');
+
+            class BoldBlot extends Inline { }
+            BoldBlot.blotName = 'bold';
+            BoldBlot.tagName = 'strong';
+
+            class ItalicBlot extends Inline { }
+            ItalicBlot.blotName = 'italic';
+            ItalicBlot.tagName = 'em';
+
+            class LinkBlot extends Inline {
+              static create(url) {
+                let node = super.create();
+                node.setAttribute('href', url);
+                node.setAttribute('target', '_blank');
+                return node;
+              }
+
+              static formats(node) {
+                return node.getAttribute('href');
+              }
+            }
+            LinkBlot.blotName = 'link';
+            LinkBlot.tagName = 'a';
+
+            class BlockquoteBlot extends Block { }
+            BlockquoteBlot.blotName = 'blockquote';
+            BlockquoteBlot.tagName = 'blockquote';
+
+            class HeaderBlot extends Block { }
+            HeaderBlot.blotName = 'header';
+            HeaderBlot.tagName = ['h1', 'h2'];
+
+            Quill.register(BoldBlot);
+            Quill.register(ItalicBlot);
+            Quill.register(LinkBlot);
+            Quill.register(BlockquoteBlot);
+            Quill.register(HeaderBlot);
+
+            let quill = new Quill('#editor-container');
+
+            $('#bold-button').click(function() {
+              quill.format('bold', true);
+            });
+            $('#italic-button').click(function() {
+              quill.format('italic', true);
+            });
+
+            $('#link-button').click(function() {
+              let value = prompt('Enter link URL');
+              quill.format('link', value);
+            });
+
+            $('#blockquote-button').click(function() {
+              quill.format('blockquote', true);
+            });
+
+            $('#header-1-button').click(function() {
+              quill.format('header', 1);
+            });
+
+            $('#header-2-button').click(function() {
+              quill.format('header', 2);
+            });
+        </script>
+    </body>
+</html>
