@@ -1,0 +1,138 @@
+/*stylesheet for bootstraptest*/
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+/*    background-color: rgb(246, 238, 234);*/
+    
+    
+}
+
+a {
+    text-decoration:underline;
+    color: black;
+}
+
+#logo {
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    
+}
+
+.shadow-bottom {
+    -webkit-box-shadow: 0 8px 6px -6px #eee;
+    -moz-box-shadow: 0 8px 6px -6px #eee;
+    box-shadow: 0 8px 6px -6px #eee;
+
+    /* the rest of your styling */
+}
+
+#nav .change {
+    -webkit-box-shadow: 0 8px 6px -6px #eee;
+    -moz-box-shadow: 0 8px 6px -6px #eee;
+    box-shadow: 0 8px 6px -6px #eee;
+}
+
+
+img {
+    image-orientation: from-image;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+
+.masonry {
+  display: grid;
+  grid-gap: 4em; /* [1] Add some gap between rows and columns */
+  grid-template-columns: repeat( auto-fill, minmax( 400px, 1fr ) ); /* [2] Make columns adjust according to the available viewport */
+  grid-auto-rows: 0; /* [3] Set the height for implicitly-created row track */
+}
+
+.masonry-brick {
+    transition: opacity .25s ease-in-out;
+}
+
+.masonry-content {
+    overflow: hidden;
+}
+
+.masonry-title {}
+
+.masonry-description {}
+
+
+.col--2x {
+   grid-row-end: span 2;
+}
+.col--3x {
+   grid-row-end: span 3;
+}
+
+
+
+
+
+
+
+/* Masonry on large screens */
+@media only screen and (min-width: 1024px) {
+
+
+}
+
+/* Masonry on medium-sized screens */
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+    
+    .masonry {
+  display: grid;
+  grid-gap: 3em; /* [1] Add some gap between rows and columns */
+  grid-template-columns: repeat( auto-fill, minmax( 300px, 1fr ) ); /* [2] Make columns adjust according to the available viewport */
+  grid-auto-rows: 0; /* [3] Set the height for implicitly-created row track */
+}
+ 
+}
+
+/* Masonry on small screens */
+@media only screen and (max-width: 767px) and (min-width: 540px) {
+
+        .masonry {
+  display: grid;
+  grid-gap: 4em; /* [1] Add some gap between rows and columns */
+  grid-template-columns: repeat( auto-fill, minmax( 300px, 1fr ) ); /* [2] Make columns adjust according to the available viewport */
+  grid-auto-rows: 0; /* [3] Set the height for implicitly-created row track */
+}
+
+}
+
+/* Masonry on small screens */
+@media only screen and (max-width: 540px) {
+
+        .masonry {
+  display: grid;
+  grid-gap: 2.5em; /* [1] Add some gap between rows and columns */
+  grid-template-columns: repeat( auto-fill, minmax( 250px, 1fr ) ); /* [2] Make columns adjust according to the available viewport */
+  grid-auto-rows: 0; /* [3] Set the height for implicitly-created row track */
+}
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+   
+
+}
+
+
+
+
