@@ -473,8 +473,10 @@ $('#show-controls').click(function() {
 ////Handling Images Insertion
     
 ///
-var files = new Array();
+var filesArray = new Array();
 var filesUrls = new Array();
+
+    
     
 //functions for selecting files
 function insertLocalImage(range) {
@@ -484,13 +486,15 @@ function insertLocalImage(range) {
 
       // Listen upload local image and save to server
       input.onchange = () => {
+        
         const file = input.files[0];
+          
 
         // file type is only image.
         if (/^image\//.test(file.type)) {
 //          saveToServer(file);
             insertImageToEditor(file,range)
-            files.push(file);
+            filesArray.push(file);
             return file;
             
             
@@ -535,7 +539,7 @@ quill.on('text-change', (delta, oldContents, source) => {
                 break;
             }
         }
-        files.splice(indexToDelete,1);
+        filesArray.splice(indexToDelete,1);
         filesUrls.splice(indexToDelete,1);
   }
 });
@@ -551,8 +555,8 @@ function getImgUrls(delta) {
  
     //글이 다써지고 마지막 submit 할때(아직 하는중)
 //    
-//var form = document.querySelector('form');
-//form.onsubmit = function() {
+var form = document.querySelector('form');
+form.onsubmit = function() {
 //  // Populate hidden form on submit
 //  var myEditor = document.querySelector('#editor-container')
 //  var html = myEditor.children[0].innerHTML
@@ -563,8 +567,19 @@ function getImgUrls(delta) {
 //  
 //  // No back end to actually submit to!
 //  alert('Open the console to see the submit data!')
-//  return false;
-//};
+    
+    
+    
+    
+    //사진 업로드하기
+ filesArray.forEach(function(item, index) { 
+    saveToServer(item);
+ });
+    
+    
+    
+  return false;
+};
     
     
     
@@ -579,29 +594,27 @@ function saveToServer(file) {
       fd.append('image', file);
 
       const xhr = new XMLHttpRequest();
-      xhr.open('POST', 'http://localhost:3000/upload/image', true);
+      xhr.open('POST', 'http://localhost:5000/upload', true);
       xhr.onload = () => {
         if (xhr.status === 200) {
           // this is callback data: url
-          const url = JSON.parse(xhr.responseText).data;
-          replaceBlobToUrl(url);
+          const url = JSON.parse(xhr.responseText).url;
+          console.log(url);
+        else {
+            alert("error occured during uploading images ")
         }
+            
+            
+
       };
       xhr.send(fd);
+
 }
       /**
      * Step3. insert image url to rich editor.
      *
      * @param {string} url
      */
-    
-function replaceBlobToUrl(url) {
-// push image url to rich editor.
-    const range = editor.getSelection();
-    editor.insertEmbed(range.index, 'image', `http://localhost:9000${url}`);
-}
-
-    
 
 
    

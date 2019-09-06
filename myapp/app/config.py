@@ -21,3 +21,7 @@ MYSQL_DATABASE_USER = 'jiyunnoh'
 MYSQL_DATABASE_PASSWORD = 'Nwldbs0512!'
 MYSQL_DATABASE_DB = 'gainpedia'
 MYSQL_DATABASE_HOST = 'mysql.msk93.dreamhosters.com'
+
+
+# UPLOAD_FOLDER = '/userFiles/'
+# ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}

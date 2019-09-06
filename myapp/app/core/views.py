@@ -1,7 +1,9 @@
 from flask import Blueprint, request, render_template, flash, g, session, redirect, url_for, \
                   abort, jsonify, make_response
+from werkzeug.utils import secure_filename                  
 from app.core.repository import *
 from app import mysql
+from app import app
 import os, sys
 
 mod = Blueprint('core', __name__)
@@ -103,9 +105,37 @@ def loco():
       content = {}
   cur.close()
   return jsonify(payload)
-    
-  
 
+
+
+UPLOAD_FOLDER = '/path/to/the/uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+def allowed_file(filename):
+  return '.' in filename and \
+    filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@mod.route('/upload', methods=['POST'])
+def upload_file():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'image' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['image']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join('app/userFiles/', filename))
+            filePath = "{{ url_for('static', filename='userFiles/" + filename + "' ) }}"
+            print (filePath)
+            return jsonify(
+              {'url': filePath}
+            )
 
 
 def listdir_nohidden(path):
