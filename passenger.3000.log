@@ -1,0 +1,67 @@
+[ N 2019-07-22 12:44:11.5322 612/T1 age/Wat/WatchdogMain.cpp:1366 ]: Starting Passenger watchdog...
+[ N 2019-07-22 12:44:11.5760 614/T1 age/Cor/CoreMain.cpp:1339 ]: Starting Passenger core...
+[ N 2019-07-22 12:44:11.5767 614/T1 age/Cor/CoreMain.cpp:256 ]: Passenger core running in multi-application mode.
+[ N 2019-07-22 12:44:11.6127 614/T1 age/Cor/CoreMain.cpp:1014 ]: Passenger core online, PID 614
+App 632 output: Traceback (most recent call last):
+App 632 output:   File "/usr/local/Cellar/passenger/6.0.2_4/libexec/src/helper-scripts/wsgi-loader.py", line 369, in <module>
+App 632 output:     app_module = load_app()
+App 632 output:   File "/usr/local/Cellar/passenger/6.0.2_4/libexec/src/helper-scripts/wsgi-loader.py", line 76, in load_app
+App 632 output:     
+App 632 output: return imp.load_source('passenger_wsgi', startup_file)
+App 632 output:   File "/Users/michaelkim/Desktop/Gainpedia/DreamHost BackEnd/passenger_wsgi.py", line 4, in <module>
+App 632 output:     os.execl(INTERP, INTERP, *sys.argv)
+App 632 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/os.py", line 314, in execl
+App 632 output:     execv(file, args)
+App 632 output: OSError: 
+App 632 output: [Errno 2] No such file or directory
+[ E 2019-07-22 12:44:14.1319 614/Tj age/Cor/App/Implementation.cpp:221 ]: Could not spawn process for application /Users/michaelkim/Desktop/Gainpedia/DreamHost BackEnd: The application process exited prematurely.
+  Error ID: 80bce19c
+  Error details saved to: /var/folders/0s/mk6q_sj96glc3tk0sbzbsq7c0000gn/T//passenger-error-oQjD2Q.html
+
+[ E 2019-07-22 12:44:14.1486 614/T8 age/Cor/Con/CheckoutSession.cpp:276 ]: [Client 1-1] Cannot checkout session because a spawning error occurred. The identifier of the error is 80bce19c. Please see earlier logs for details about the error.
+[ N 2019-07-22 12:44:14.4128 614/T5 age/Cor/SecurityUpdateChecker.h:519 ]: Security update check: no update found (next check in 24 hours)
+App 670 output: Traceback (most recent call last):
+App 670 output:   File "/usr/local/Cellar/passenger/6.0.2_4/libexec/src/helper-scripts/wsgi-loader.py", line 369, in <module>
+App 670 output:     app_module = load_app()
+App 670 output:   File "/usr/local/Cellar/passenger/6.0.2_4/libexec/src/helper-scripts/wsgi-loader.py", line 76, in load_app
+App 670 output:     return imp.load_source('passenger_wsgi', startup_file)
+App 670 output:   File "/Users/michaelkim/Desktop/Gainpedia/DreamHost BackEnd/passenger_wsgi.py", line 4, in <module>
+App 670 output:     os.execl(INTERP, INTERP, *sys.argv)
+App 670 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/os.py", line 314, in execl
+App 670 output:     
+App 670 output: execv(file, args)
+App 670 output: OSError
+App 670 output: : [Errno 2] No such file or directory
+[ E 2019-07-22 12:44:30.7064 614/To age/Cor/App/Implementation.cpp:221 ]: Could not spawn process for application /Users/michaelkim/Desktop/Gainpedia/DreamHost BackEnd: The application process exited prematurely.
+  Error ID: 5f247bc0
+  Error details saved to: /var/folders/0s/mk6q_sj96glc3tk0sbzbsq7c0000gn/T//passenger-error-YqivEJ.html
+
+[ E 2019-07-22 12:44:30.7151 614/Ta age/Cor/Con/CheckoutSession.cpp:276 ]: [Client 2-1] Cannot checkout session because a spawning error occurred. The identifier of the error is 5f247bc0. Please see earlier logs for details about the error.
+App 700 output: Traceback (most recent call last):
+App 700 output:   File "/usr/local/Cellar/passenger/6.0.2_4/libexec/src/helper-scripts/wsgi-loader.py", line 369, in <module>
+App 700 output:     app_module = load_app()
+App 700 output:   File "/usr/local/Cellar/passenger/6.0.2_4/libexec/src/helper-scripts/wsgi-loader.py", line 76, in load_app
+App 700 output:     return imp.load_source('passenger_wsgi', startup_file)
+App 700 output:   File "/Users/michaelkim/Desktop/Gainpedia/DreamHost BackEnd/passenger_wsgi.py", line 4, in <module>
+App 700 output:     os.execl(INTERP, INTERP, *sys.argv)
+App 700 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/os.py", line 314, in execl
+App 700 output:     execv(file, args)
+App 700 output: OSError: [Errno 2] No such file or directory
+[ E 2019-07-22 12:44:31.6335 614/Tt age/Cor/App/Implementation.cpp:221 ]: Could not spawn process for application /Users/michaelkim/Desktop/Gainpedia/DreamHost BackEnd: The application process exited prematurely.
+  Error ID: 8debfafd
+  Error details saved to: /var/folders/0s/mk6q_sj96glc3tk0sbzbsq7c0000gn/T//passenger-error-2nNP96.html
+
+[ E 2019-07-22 12:44:31.6645 614/Tc age/Cor/Con/CheckoutSession.cpp:276 ]: [Client 3-1] Cannot checkout session because a spawning error occurred. The identifier of the error is 8debfafd. Please see earlier logs for details about the error.
+
+[ N 2019-07-23 01:01:30.0094 614/T8 age/Cor/CoreMain.cpp:671 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ N 2019-07-23 01:01:30.0099 614/T1 age/Cor/CoreMain.cpp:1245 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ N 2019-07-23 01:01:30.0101 614/T8 Ser/Server.h:901 ]: [ServerThr.1] Freed 0 spare client objects
+[ N 2019-07-23 01:01:30.0102 614/Te Ser/Server.h:901 ]: [ServerThr.4] Freed 0 spare client objects
+[ N 2019-07-23 01:01:30.0102 614/Ta Ser/Server.h:901 ]: [ServerThr.2] Freed 0 spare client objects
+[ N 2019-07-23 01:01:30.0103 614/T8 Ser/Server.h:558 ]: [ServerThr.1] Shutdown finished
+[ N 2019-07-23 01:01:30.0102 614/Te Ser/Server.h:558 ]: [ServerThr.4] Shutdown finished
+[ N 2019-07-23 01:01:30.0103 614/Tc Ser/Server.h:901 ]: [ServerThr.3] Freed 0 spare client objects
+[ N 2019-07-23 01:01:30.0103 614/Ta Ser/Server.h:558 ]: [ServerThr.2] Shutdown finished
+[ N 2019-07-23 01:01:30.0105 614/Tc Ser/Server.h:558 ]: [ServerThr.3] Shutdown finished
+[ N 2019-07-23 01:01:30.0106 614/Tg Ser/Server.h:901 ]: [ApiServer] Freed 0 spare client objects
+[ N 2019-07-23 01:01:30.0106 614/Tg Ser/Server.h:558 ]: [ApiServer] Shutdown finished
