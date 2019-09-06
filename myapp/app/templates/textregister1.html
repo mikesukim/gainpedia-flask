@@ -208,7 +208,7 @@ img {
     
 <form method="post" id="identifier">  
 <div id="scrolling-container">
-<div id="editor-container">Jiyun Love
+<div id="editor-container">Jiyun Love hohoho
 </div>
 </div>
 </form>
@@ -589,10 +589,11 @@ form.onsubmit = function() {
      *
      * @param {File} file
      */
+    
 function saveToServer(file) {
       const fd = new FormData();
       fd.append('image', file);
-
+//
       const xhr = new XMLHttpRequest();
       xhr.open('POST', 'http://localhost:5000/upload', true);
       xhr.onload = () => {
@@ -600,15 +601,13 @@ function saveToServer(file) {
           // this is callback data: url
           const url = JSON.parse(xhr.responseText).url;
           console.log(url);
+            }
         else {
             alert("error occured during uploading images ")
-        }
-            
-            
+        }  
 
       };
       xhr.send(fd);
-
 }
       /**
      * Step3. insert image url to rich editor.
