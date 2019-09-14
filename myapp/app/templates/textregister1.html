@@ -208,7 +208,7 @@ img {
     
 <form method="post" id="identifier">  
 <div id="scrolling-container">
-<div id="editor-container">Jiyun Love
+<div id="editor-container">Jiyun Love hohoho
 </div>
 </div>
 </form>
@@ -554,6 +554,8 @@ function getImgUrls(delta) {
     
  
     //글이 다써지고 마지막 submit 할때(아직 하는중)
+    
+    //여기서 지윤이가 만든 팝업창이 들어가야함 !!
 //    
 var form = document.querySelector('form');
 form.onsubmit = function() {
@@ -567,8 +569,7 @@ form.onsubmit = function() {
 //  
 //  // No back end to actually submit to!
 //  alert('Open the console to see the submit data!')
-    
-    
+
     
     
     //사진 업로드하기
@@ -589,10 +590,11 @@ form.onsubmit = function() {
      *
      * @param {File} file
      */
+    
 function saveToServer(file) {
       const fd = new FormData();
       fd.append('image', file);
-
+//
       const xhr = new XMLHttpRequest();
       xhr.open('POST', 'http://localhost:5000/upload', true);
       xhr.onload = () => {
@@ -600,15 +602,13 @@ function saveToServer(file) {
           // this is callback data: url
           const url = JSON.parse(xhr.responseText).url;
           console.log(url);
+            }
         else {
             alert("error occured during uploading images ")
-        }
-            
-            
+        }  
 
       };
       xhr.send(fd);
-
 }
       /**
      * Step3. insert image url to rich editor.
