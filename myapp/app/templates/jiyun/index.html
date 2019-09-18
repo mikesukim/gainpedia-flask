@@ -19,7 +19,7 @@
   <body style="font-family: Poppins;">
    
       
-<header style="">  
+<header>  
      <div class="mx-auto headergrid" style=" display: grid;"> 
          
      <div><a href="index.html" id="logo">FAYETTE</a>
@@ -32,15 +32,17 @@
     <a href="about.html">About</a>
         </div>     
     
-<div class="menu" onclick="xFunction(this), dropdownFunction()">
+<div class="menu" id="menubar" onclick="xFunction(this), dropdownFunction()">
   <div class="bar1"></div>
   <div class="bar2"></div>
   <div class="bar3"></div>
         
-    <div class="dropdown-content" style="" id="myDropdown">
-    <a href="#">Blog</a>
-    <a href="#">About</a>
-    
+    <div class="dropdown-toggle" id="myDropdown">
+    <ul class="dropdown">
+    <li><a href="index.html">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="#">What Else</a></li>
+    </ul>        
   </div>
 </div>     
         
@@ -49,10 +51,11 @@
       
     
       
-<div class="masonry">
-          
-         
-<div class="masonry-brick">
+<div class="grid">
+<div class="grid-sizer"></div>          
+<div class="gutter-sizer"></div>
+    
+<div class="grid-item">
 <div class="masonry-content text-center">
      <a href="readmore.html"><img class="image mb-4" src="images/typewriter.JPG" alt="pic"></a>
      <p class="masonry-description mb-4">Aug. 5. 2019</p>
@@ -61,7 +64,7 @@
 </div>
 </div>
                  
-<div class="masonry-brick">
+<div class="grid-item">
 <div class="masonry-content text-center">
     <a href="readmore.html"><img class="image mb-4" src="images/menu.JPG" alt="pic2"></a>
     <p class="masonry-description mb-4">Aug. 5. 2019</p>
@@ -70,7 +73,7 @@
 </div>
 </div>
     
-<div class="masonry-brick">
+<div class="grid-item">
 <div class="masonry-content text-center">
     <a href="readmore.html"><img class="image mb-4" src="images/jamjars.JPG" alt="pic2"></a>
     <p class="masonry-description mb-4">Aug. 5. 2019</p>
@@ -78,52 +81,15 @@
     <a class="readmore" href="readmore.html">Read More</a>
 </div>
 </div>    
-    
-<div class="masonry-brick">     
+
+<div class="grid-item">
 <div class="masonry-content text-center">
-    <a href="readmore.html"><img class="image mb-4" src="images/booksVashon.JPG" alt="pic"></a>
-    <p class="masonry-description mb-4">Aug. 5. 2019</p>
-    <h1 class="masonry-title mb-4">Our Daily Log</h1>
-    <a class="readmore" href="readmore.html">Read More</a>
-</div>      
+     <a href="readmore.html"><img class="image mb-4" src="images/typewriter.JPG" alt="pic"></a>
+     <p class="masonry-description mb-4">Aug. 5. 2019</p>
+     <h1 class="masonry-title mb-4">Our Daily Log</h1>
+     <a class="readmore" href="readmore.html">Read More</a>
+</div>
 </div>    
-
-<div class="masonry-brick">
-<div class="masonry-content text-center">
-    <a href="readmore.html"><img class="image mb-4" src="images/opensign.JPG" alt="pic2"></a>
-    <p class="masonry-description mb-4">Aug. 5. 2019</p>
-    <h1 class="masonry-title mb-4">Our Daily Log</h1>
-    <a class="readmore" href="readmore.html">Read More</a>
-</div>
-</div>   
-         
-<div class="masonry-brick">     
-<div class="masonry-content text-center">
-    <a href="readmore.html"><img class="image mb-4" src="images/IMG_1340.JPG" alt="pic"></a>
-    <p class="masonry-description mb-4">Aug. 5. 2019</p>
-    <h1 class="masonry-title mb-4">Our Daily Log</h1>
-    <a class="readmore" href="readmore.html">Read More</a>
-</div>      
-</div>
-
-<div class="masonry-brick">
-<div class="masonry-content text-center">
-    <a href="readmore.html"><img class="image mb-4" src="images/IMG_0693.jpg" alt="pic"></a>
-    <p class="masonry-description mb-4">Aug. 5. 2019</p>
-    <h1 class="masonry-title mb-4">Our Daily Log</h1>
-    <a class="readmore" href="readmore.html">Read More</a>
-</div>
-</div>   
-                    
-<div class="masonry-brick">
-<div class="masonry-content text-center">
-    <a href="readmore.html"><img class="image mb-4" src="images/IMG_2715.JPG" alt="pic"></a>
-    <p class="masonry-description mb-4">Aug. 5. 2019</p>
-    <h1 class="masonry-title mb-4">Our Daily Log</h1>
-    <a class="readmore" href="readmore.html">Read More</a>
-</div>
-</div>
-          
           
       
 </div>
@@ -143,7 +109,7 @@ function xFunction(x) {
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function dropdownFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+  document.getElementById("myDropdown").classList.toggle("show");  
 }
 
 // Close the dropdown if the user clicks outside of it
@@ -153,21 +119,50 @@ window.onclick = function(e) {
     if (myDropdown.classList.contains('show')) {
       myDropdown.classList.remove('show');
     }
+      
+    var menubar = document.getElementById("menubar");
+     if (menubar.classList.contains('change')) {
+      menubar.classList.remove('change');
+    } 
   }
 }
-</script>      
-      
-<script>
-jQuery(window).on('load', function() {   
-$('.masonry').masonry({
-  itemSelector: '.masonry-brick',
-  columnWidth: 160,
-  transitionDuration: '0.8s',
-    isFitWidth: true
-});
-});
 
-</script>
+</script> 
+      
+<!--
+<script>
+$( ".menu" ).click(function() {
+  $( ".dropdown" ).slideToggle( "slow" );
+});
+</script>      
+-->
+
+      
+<script> 
+    
+$('.grid').masonry({
+  // set itemSelector so .grid-sizer is not used in layout
+  itemSelector: '.grid-item',
+  // use element for option
+  columnWidth: '.grid-sizer',
+  percentPosition: true,
+    gutter: '.gutter-sizer',
+//    fitWidth: true,
+    transitionDuration: '0.8s',
+    stagger: 30
+})   
+    
+// init Masonry
+var $grid = $('.grid').masonry({
+  // options...
+});
+// layout Masonry after each image loads
+$grid.imagesLoaded().progress( function() {
+  $grid.masonry('layout');
+});    
+</script> 
+      
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>       <script src="https://code.jquery.com/jquery-3.4.1.js"></script> 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
