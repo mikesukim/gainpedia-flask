@@ -17,12 +17,13 @@ body {
 
 header {
 /*    height: 7em;*/
-    padding: 50px 0 0 30px;
+    padding: 40px 0 0 30px;
+    margin-bottom: 80px;
 }
 
 .headergrid {
     display: grid;
-    grid-template-columns: 80% 5% 5% auto;
+    grid-template-columns: 87% 5% 5% 0%;
     grid-gap: 10px;
     padding: 10px;
 }
@@ -48,7 +49,7 @@ a {
     font-family: 'Playfair Display', 'Artifika', sans-serif;
     font-weight: 700;
     letter-spacing: 2px;
-    padding-left: 25px;
+    padding-left: 20px;
 }
 
 a:hover {
@@ -108,15 +109,12 @@ img {
 
 .nav {
     text-align: right; 
-    width: 50%; 
-    padding-right: 150px;
     text-decoration-line: none; 
     vertical-align: middle; 
     line-height: 3em;
 }
 
 .menu {
-  
   cursor: pointer;
 }
 
@@ -460,12 +458,12 @@ blockquote {
 }
 
 /*fade-in*/
-.masonry-brick {
-    animation: fadein 2s;
-    -moz-animation: fadein 2s; /* Firefox */
-    -webkit-animation: fadein 2s; /* Safari and Chrome */
-    -o-animation: fadein 2s; /* Opera */
-    width: 80%;
+.masonry-brick, .grid-item {
+    animation: fadein 1.5s;
+    -moz-animation: fadein 1.5s; /* Firefox */
+    -webkit-animation: fadein 1.5s; /* Safari and Chrome */
+    -o-animation: fadein 1.5s; /* Opera */
+/*    width: 80%;*/
 }
 
 @keyframes fadein {
@@ -502,6 +500,25 @@ blockquote {
 }
 
 
+.grid {
+  margin: 0 auto;
+    padding-left: 60px;
+}
+
+.grid-item {
+  float: left;
+  width: 43%;
+    margin-bottom: 80px;
+}
+
+.grid-sizer {
+    width: 45%;
+}
+
+.gutter-sizer {
+    width: 6%;
+}
+
 
 
 /* Masonry on large screens */
@@ -510,12 +527,9 @@ blockquote {
         width: 40%;
     }
 
-    
 }
 
 @media only screen and (max-width: 1023px) and (min-width: 992px) {
-    
-    
     
     .masonry-brick {
         width: 40%;
@@ -528,21 +542,16 @@ blockquote {
     .modal-dialog {
         width: 100%;
     }
-   
-    body {
-        background-color: blue;
-    }
+ 
 }
 
 
 /* Masonry on medium-sized screens */
 @media only screen and (max-width: 991px) and (min-width: 768px) {
     
-/*
-    body {
-        background-color: pink;
+    header {
+        padding-left: 10px;
     }
-*/
     
     .masonry-brick {
         width: 80%;
@@ -588,7 +597,7 @@ blockquote {
     
     .headergrid {
     display: grid;
-    grid-template-columns: 83% auto auto 5%;
+    grid-template-columns: 92% auto auto auto;
     grid-gap: 10px;
     padding: 10px;
     }
@@ -600,6 +609,15 @@ blockquote {
     
     .bar1, .bar2, .bar3 {
         display:inherit;   
+    }
+    
+    .gutter-sizer {
+        width: 6%;
+    }
+    
+    .grid {
+        padding-left: 40px;
+        max-width: 100%;
     }
  
 }
@@ -614,10 +632,6 @@ blockquote {
 
 /* Masonry on small screens/ iPad */
 @media only screen and (max-width: 767px) and (min-width: 540px) {
-    
-    body {
-        background-color: red;
-    }
     
     .masonry-brick {
         width: 80%;
@@ -669,10 +683,6 @@ blockquote {
         display: none;
     }
     
-    #logo {
-        padding-left: 55px;
-    }
-    
     .menu {
         margin-top: 10px;
     }
@@ -683,23 +693,31 @@ blockquote {
     
     .headergrid {
     display: grid;
-    grid-template-columns: 85% auto auto 5%;
+    grid-template-columns: 90% auto auto 5%;
     grid-gap: 10px;
     padding: 10px;
+    }
+    
+    .grid-item {
+        width: 90%;
+    }
+    
+    .grid {
+        padding-left: 5%;
     }
 
 }
 
 /* Masonry on small screens/ iPhone */
 @media only screen and (max-width: 540px) {
-  
-    body {
-        background-color: yellow;
-    }
     
     header {
         padding-left: 0;
         margin-bottom: 50px;
+    }
+    
+    #logo {
+        padding-left: 15px;
     }
     
     .masonry-brick {
@@ -735,9 +753,23 @@ blockquote {
         margin-top: 10px;
     }
     
+    .headergrid {
+    display: grid;
+    grid-template-columns: 88% auto auto 5%;
+    grid-gap: 10px;
+    padding: 10px;
+    }
+    
     .bar1, .bar2, .bar3 {
         display:inherit;
-        
+    }
+    
+    .grid-item {
+        width: 90%;
+    }
+    
+    .grid {
+        padding-left: 5%;
     }
 }
 
