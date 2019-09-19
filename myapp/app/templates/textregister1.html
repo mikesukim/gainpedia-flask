@@ -7,7 +7,56 @@
 <!-- Include stylesheet -->
 <link href="{{url_for('static', filename='vendor/node_modules/quill/dist/quill.bubble.css')}}" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans%3A300,400,600,700" rel="stylesheet">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Alegreya:400,500,700,800|Merriweather:300,300i,400,400i,700,700i|Playfair+Display:400,400i,700,700i,900,900i|Open+Sans:300,400,600,700|Red+Hat+Text:400,500,700&display=swap" rel="stylesheet">  
+
+<link href="../templates/jiyun/css/styles.css" rel="stylesheet" type="text/css">
+    
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/modalstyles.css') }}">    
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+      
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>     
+    
+ 
+<script>
+$(document).ready(function(){
+  $("#changeimg").click(function(){
+    $("div.crop").hide();
+    $("#changeimg").hide();
+    $("#previewtitle").hide();   
+  });
+  $("#changeimg").click(function(){
+    $("#selectimg").show();
+  });
+    
+    $("#done").click(function(){
+    var images = $('.selected img').attr('src');     
+    $('#previewimg').prop('src', images); 
+    $("#selectimg").hide();       
+  });
+    
+  $("#done").click(function(){
+ 
+    $("div.crop").show();  
+    $("#changeimg").show();
+    $("#previewtitle").show();
+  });  
+});
+    
+    
+$(function() {
+$(".column3").click(function() {
+    
+$(".column3").not(this).removeClass("selected");
+$(this).toggleClass("selected");
+$(this).addClass('no-hover');  
+$(".column3").not(this).removeClass("no-hover");  
+});  });
+   
+</script>     
+    
 <style>
 html {
 height: 100%;
@@ -16,6 +65,7 @@ body {
 margin: 0 auto;
 height: 100%;
 /*width: 70%*/
+
 }
 
 /* Tell Quill not to scroll */
@@ -24,9 +74,10 @@ height: auto;
 min-height: 100%;
 padding: 50px;
 }
+    
 #editor-container .ql-editor {
 overflow-y: visible; 
-width: 70%;
+max-width: 728px;
 margin: 0 auto;
 font-family: 'Open Sans', Helvetica, sans-serif;
 font-size: 1.5em;
@@ -64,8 +115,10 @@ button {
   display: inline-block;
   font-size: 18px;
   padding: 0;
+/*
   height: 32px;
   width: 32px;
+*/
   text-align: center;
 }
 button:active, button:focus {
@@ -73,8 +126,14 @@ button:active, button:focus {
 }
     
 #editor-container blockquote {
-  border-left: 4px solid #111;
-  padding-left: 1em;
+/*  border-left: 4px solid #111;*/
+    
+    font-family: KoreanCNML, Sandoll MiSaeng, sans-serif;
+    font-size: 1.4em;
+    line-height: 45px;
+    padding: 30px 0 30px 30px;
+    color: #888;
+    margin-bottom: 30px;
 }
     
 #editor-container h1 + p,
@@ -162,15 +221,54 @@ button:active, button:focus {
 }
 img {
     
-  width:70%;
+  width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+/*If lang=kor, change font.    */
 /*
-  width: 50%;
-        
+.pKOR {
+   font-family: KoreanPNKOL, sans-serif;
+    font-weight: 300;
+    font-size: 1.1em;
+    line-height: 32px;
+    text-align: left;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    letter-spacing: 1px;     
+}   
 */
-    }
+    
+h2 {
+     font-family: 'Merriweather', sans-serif;   
+    font-size: 1.35em;
+}    
+    
+p {
+    font-family: 'Merriweather', sans-serif;
+    font-weight: 300;
+    font-size: 0.9em;
+    line-height: 32px;
+    text-align: left;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+} 
+    
+#pKOR {
+    font-family: KoreanPNKOL, sans-serif;   
+}    
+    
+h4 {
+    font-family: 'Merriweather', sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    margin-bottom: 20px;
+    margin-top: 60px;
+}
+    
     
 
 </style>
@@ -184,6 +282,110 @@ img {
 <!-- Create the editor container -->
   
 <button class="btn btn-primary" type="submit" form="identifier"><i class="fa fa-check-square"></i></button>
+    
+<!-- Extra large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button>
+    
+    
+
+    
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true" style="background: white; ">
+   
+<div class="modal-dialog modal-xl">
+ 
+    
+<div class="modal-content" style="border-style: none;">
+     
+        
+<div class="container">
+ <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>    
+    
+<div class="row">
+        
+<div class="column2">
+<h1 id="modalh1" style="padding: 0;">Story Preview</h1>
+
+<div style="position: relative;">
+<button type="button" id="changeimg">
+  Change preview image
+</button>    
+<div class="crop">
+<img id="previewimg" src="images/booksVashon.JPG" alt="preview"> 
+</div>   
+</div>
+    
+<div id="selectimg">
+<button id="done">Done</button>   
+    
+<div style="height: auto; margin: 0 auto;">
+
+<div >
+<div class="row" style="margin: 0 auto; padding-left: 20px; ">
+    
+<div class="column3 thumbnail">
+<img class="selectimg-choice" src="images/booksVashon.JPG" alt="pic1">
+</div>  <!--end of column-->  
+
+<div class="column3 thumbnail">
+<img class="selectimg-choice" src="images/typewriter.JPG" alt="pic1">
+</div> 
+ 
+<div class="column3 thumbnail" >    
+<img class="selectimg-choice portrait" src="images/menu.JPG" alt="pic1">
+</div>   
+
+<div class="column3 thumbnail">
+<img class="selectimg-choice" src="images/booksVashon.JPG" alt="pic1">
+</div>  <!--end of column-->  
+
+<div class="column3 thumbnail">
+<img class="selectimg-choice" src="images/typewriter.JPG" alt="pic1">
+</div> 
+ 
+<div class="column3 thumbnail" >    
+<img class="selectimg-choice portrait" src="images/menu.JPG" alt="pic1">
+</div>    
+    
+      
+</div>    <!--end of row-->  
+</div>        
+       
+    
+</div>    
+    
+    
+    
+</div>    
+    
+<form id="previewtitle" action="/action_page.php">
+<input type="text" name="title" placeholder="Write a preview title" style="font-weight: 500; font-size: 1.2em; font-family: 'Red Hat Text';">      
+<input type="text" name="subtitle" placeholder="Write a preview subtitle" style="font-size: 1em; font-family: 'Red Hat Text';">        
+</form>
+</div> <!--end of col1-->
+        
+        
+<div class="column2">
+<form action="/action_page.php">
+<p style="font-size: 0.9em; margin: 5px 0 15px 0; font-family: 'Red Hat Text'; letter-spacing: 0;">Add or change tags (up to 5)  </p>    
+<input type="text" name="tag" placeholder="Add a tag">
+
+<input type="submit" name="submit" value="Publish Now" style="margin-top: 20px;">
+</form>  
+</div> <!--end of col2-->
+     </div> <!--end of row--> 
+        </div> <!--end of container-->   
+       
+      
+    </div>
+  </div>
+</div>
+    
+    
+    
+    
+    
     
 <div id="controls">
 <div id="tooltip-controls">
@@ -208,18 +410,51 @@ img {
     
 <form method="post" id="identifier">  
 <div id="scrolling-container">
-<div id="editor-container">Jiyun Love hohoho
+<div id="editor-container">
+<p>Jiyun Love hohoho</p>    
+<p>Michael Love hahaha</p>
+    
+<!--
+<p id="pKOR">
+안녕 자기야. 이 글씨체는 어때? 지금 비가 내리는데 지붕위에 떨어지는 소리가 좋다. 자기가 지금 이 소리, 이 분위기를 정말 좋아했을 것 같아. 함께 있으면 좋을텐데. </p> 
+-->
+    
+<blockquote>
+"안녕, 난 시네마체라고 해. 오늘은 기분이 우울하니까 하이힐을 신어야겠어. 그리고 성언이한테 사랑한다고 전해줄래? 지금 비가 내리는데, 빗소리 좋다.." 
+</blockquote> 
+    
+<h2>Soaking In The Colors</h2>
+    
+<p>Reboot builds upon Normalize, providing many HTML elements with somewhat opinionated styles using only element selectors. 
+Reboot builds upon Normalize, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. </p>
+    
+<!--
+<figure>
+<img src="" class="img-fluid mx-auto d-block articleimg" alt="Beautiful Sky"> 
+<figcaption>Photo by Jiyun in Vashon, Washington</figcaption>
+</figure>     
+-->
+    
 </div>
 </div>
 </form>
     
     
-    
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
     
 <!-- Include the Quill library -->
 <script src="{{url_for('static', filename='vendor/node_modules/quill/dist/quill.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 
+    
+    
+    
+    
+    
 <!-- Initialize Quill editor -->
 <script>
     
