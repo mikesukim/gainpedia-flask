@@ -1,3 +1,8 @@
+# DEPRECATED.. 
+	This gainpedia is written using Flask.
+	Updated version is on process using React + Apollo Server.
+
+
 
 # BackEnd Stacks
 
@@ -37,4 +42,3 @@
 
 
 
-# 무엇을 해야하나
